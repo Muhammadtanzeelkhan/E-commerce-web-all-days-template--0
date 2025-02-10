@@ -1,5 +1,42 @@
 {
-  "node": {},
+  "node": {
+    "7f7a00cc05050e3962cef6cff6efde7cb8290406e9": {
+      "workers": {
+        "app/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5CT%5C%5CNEXT.JS%20project%20Q2%20assigment%5C%5Cnext.js%20milestone%203%5C%5Ce%20commerce%20website%20%20and%20api%20routing%5C%5C4PM%5C%5Cnode_modules%5C%5Cnext-sanity%5C%5Cdist%5C%5Cvisual-editing%5C%5Cserver-actions.js%22%2C%5B%5B%227f7a00cc05050e3962cef6cff6efde7cb8290406e9%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/_not-found/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5CT%5C%5CNEXT.JS%20project%20Q2%20assigment%5C%5Cnext.js%20milestone%203%5C%5Ce%20commerce%20website%20%20and%20api%20routing%5C%5C4PM%5C%5Cnode_modules%5C%5Cnext-sanity%5C%5Cdist%5C%5Cvisual-editing%5C%5Cserver-actions.js%22%2C%5B%5B%227f7a00cc05050e3962cef6cff6efde7cb8290406e9%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/shop/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5CT%5C%5CNEXT.JS%20project%20Q2%20assigment%5C%5Cnext.js%20milestone%203%5C%5Ce%20commerce%20website%20%20and%20api%20routing%5C%5C4PM%5C%5Cnode_modules%5C%5Cnext-sanity%5C%5Cdist%5C%5Cvisual-editing%5C%5Cserver-actions.js%22%2C%5B%5B%227f7a00cc05050e3962cef6cff6efde7cb8290406e9%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/wishlist/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5CT%5C%5CNEXT.JS%20project%20Q2%20assigment%5C%5Cnext.js%20milestone%203%5C%5Ce%20commerce%20website%20%20and%20api%20routing%5C%5C4PM%5C%5Cnode_modules%5C%5Cnext-sanity%5C%5Cdist%5C%5Cvisual-editing%5C%5Cserver-actions.js%22%2C%5B%5B%227f7a00cc05050e3962cef6cff6efde7cb8290406e9%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/login/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5CT%5C%5CNEXT.JS%20project%20Q2%20assigment%5C%5Cnext.js%20milestone%203%5C%5Ce%20commerce%20website%20%20and%20api%20routing%5C%5C4PM%5C%5Cnode_modules%5C%5Cnext-sanity%5C%5Cdist%5C%5Cvisual-editing%5C%5Cserver-actions.js%22%2C%5B%5B%227f7a00cc05050e3962cef6cff6efde7cb8290406e9%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/search/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22D%3A%5C%5CT%5C%5CNEXT.JS%20project%20Q2%20assigment%5C%5Cnext.js%20milestone%203%5C%5Ce%20commerce%20website%20%20and%20api%20routing%5C%5C4PM%5C%5Cnode_modules%5C%5Cnext-sanity%5C%5Cdist%5C%5Cvisual-editing%5C%5Cserver-actions.js%22%2C%5B%5B%227f7a00cc05050e3962cef6cff6efde7cb8290406e9%22%2C%22revalidateRootLayout%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        }
+      },
+      "layer": {
+        "app/page": "action-browser",
+        "app/_not-found/page": "action-browser",
+        "app/shop/page": "action-browser",
+        "app/wishlist/page": "action-browser",
+        "app/login/page": "action-browser",
+        "app/search/page": "action-browser"
+      }
+    }
+  },
   "edge": {},
   "encryptionKey": "SEH0tYDz+IDdtiWy/j3jphAUXnS5+add2hdDeFDLZyE="
 }

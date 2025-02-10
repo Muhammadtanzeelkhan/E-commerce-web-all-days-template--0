@@ -1,113 +1,115 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react'
-import Link from "next/link"
-import { Heart, Menu, Search, ShoppingCart, User, X } from 'lucide-react'
-import CartSideBar from './cart-side'
-import { useCartContext } from '@/app/cardcontext/page'
+import React, { useState } from 'react';
+import Link from 'next/link';
+import { Heart, Menu, Search, ShoppingCart, User, X } from 'lucide-react';
+import CartSideBar from './cart-side';
+import { useCartContext } from '@/app/cardcontext/page';
 
 export default function NavBar() {
-  const [sideBarDisplay, setSideBarDisplay] = useState(false)
-  const { cartItems, cartBarOpen, setCartBarOpen } = useCartContext()
+  const [sideBarOpen, setSideBarOpen] = useState(false);
+  const { cartItems, cartBarOpen, setCartBarOpen } = useCartContext();
 
   return (
-    <nav className="bg-[#FBEBB5] px-6 py-4">
-      <div className="flex items-center justify-between">
+    <nav className="bg-[#FBEBB5] px-6 py-4 shadow-md">
+      <div className="flex items-center justify-between max-w-7xl mx-auto">
         
-        {/* Center Section (Navigation Links) */}
-        <div className="hidden md:flex space-x-14 ml-20 items-center justify-center w-full">
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-bold text-gray-900">
+          MyStore
+        </Link>
+
+        {/* Desktop Navigation Links */}
+        <div className="hidden md:flex space-x-10">
           <NavLinks />
         </div>
 
-        {/* Right Section (Icons) */}
-        <div className="flex mr-3 items-center space-x-5">
+        {/* Icons & Mobile Menu */}
+        <div className="flex items-center space-x-5">
           <NavIcons />
-          
-          {/* Hamburger Menu - Visible only on mobile */}
-          <div className="md:hidden">
-            <Menu className="h-6 w-6" onClick={() => setSideBarDisplay(!sideBarDisplay)} />
-          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden focus:outline-none"
+            onClick={() => setSideBarOpen(!sideBarOpen)}
+          >
+            <Menu className="h-6 w-6" />
+          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className="md:hidden">
-        <div className="space-y-2 text-center py-4">
-          <NavLinks mobile />
-        </div>
-      </div>
-
-      {/* Sidebar Menu */}
-      {sideBarDisplay && (
-        <div
-          className={`flex absolute bg-white text-white right-1 top-4 rounded-2xl flex-col items-center px-[1.5rem] gap-8 py-[2rem] z-[999] min-h-[100vh] w-screen sm:w-[14em]`}
-        >
-          <div className="w-full relative">
-            <X
-              onClick={() => setSideBarDisplay(!sideBarDisplay)}
-              className="top-1/2 right-0 size-6 cursor-pointer rounded-full text-black border-box"
-            />
-          </div>
-          <NavLinks mobile />
-        </div>
-      )}
+      {/* Mobile Navigation Menu */}
+      {sideBarOpen && <MobileMenu onClose={() => setSideBarOpen(false)} />}
 
       {/* Cart Sidebar */}
       {cartBarOpen && <CartSideBar />}
     </nav>
-  )
+  );
 }
 
-function NavLinks({ mobile = false }: { mobile?: boolean }) {
-  const linkClass = mobile
-    ? "block py-2 text-sm font-bold" // Make text bold for mobile
-    : "text-sm font-bold text-center relative hover:underline" // Make text bold for desktop
-
+/** Navigation Links */
+function NavLinks() {
   return (
-    <React.Fragment>
-      <Link className={linkClass} href="/">Home</Link>
-      <Link className={linkClass} href="/shop">Shop</Link>
-      <Link className={linkClass} href="/about">About</Link>
-      <Link className={linkClass} href="/contact">Contact</Link>
-    </React.Fragment>
-  )
+    <>
+      {['Home', 'Shop', 'About', 'Contact'].map((item) => (
+        <Link
+          key={item}
+          href={`/${item.toLowerCase()}`}
+          className="text-sm font-medium text-gray-800 hover:text-gray-600 transition"
+        >
+          {item}
+        </Link>
+      ))}
+    </>
+  );
 }
 
+/** Navigation Icons */
 function NavIcons() {
-  const { cartItems, setCartBarOpen } = useCartContext()
+  const { cartItems, setCartBarOpen } = useCartContext();
 
   return (
     <>
-      <button className="p-2">
-        <Link href="/login">
-          <User className="h-5 w-5" />
-          <span className="sr-only">Account</span>
-        </Link>
-      </button>
-      <button className="p-2">
-        <Link href="/singleproduct">
-          <Search className="h-5 w-5" />
-          <span className="sr-only">Search</span>
-        </Link>
-      </button>
-      
-      <button className="p-2">
-        <Link href="/wishlist">
-          <Heart className="h-5 w-5" />
-          <span className="sr-only">Wishlist</span>
-        </Link>
-      </button>
-
+      <Link href="/login" className="relative p-2 hover:opacity-75 transition">
+        <User className="h-5 w-5" />
+      </Link>
+      <Link href="/search" className="relative p-2 hover:opacity-75 transition">
+        <Search className="h-5 w-5" />
+      </Link>
+      <Link href="/wishlist" className="relative p-2 hover:opacity-75 transition">
+        <Heart className="h-5 w-5" />
+      </Link>
       <button
-        className="p-2 flex items-center justify-center cursor-pointer"
+        className="relative p-2 hover:opacity-75 transition flex items-center"
         onClick={() => setCartBarOpen((prev) => !prev)}
       >
         <ShoppingCart className="h-5 w-5" />
-        <span className="sr-only">Cart</span>
-        <sup className="size-3 bg-yellow-400 text-white text-xl flex-center p-4 rounded-full">
-          {cartItems.length}
-        </sup>
+        {cartItems.length > 0 && (
+          <span className="absolute -top-1 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5 py-0.5">
+            {cartItems.length}
+          </span>
+        )}
       </button>
     </>
-  )
+  );
+}
+
+/** Mobile Navigation Menu */
+function MobileMenu({ onClose }: { onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50">
+      <div className="absolute right-0 top-0 w-64 bg-white shadow-lg h-full flex flex-col p-6">
+        <button
+          className="self-end text-gray-600 hover:text-gray-900"
+          onClick={onClose}
+        >
+          <X className="h-6 w-6" />
+        </button>
+
+        <div className="mt-8 space-y-4">
+          <NavLinks />
+        </div>
+      </div>
+    </div>
+  );
 }
